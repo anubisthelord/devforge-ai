@@ -1,0 +1,359 @@
+@import "tailwindcss";
+
+/* Hide scrollbar for all browsers */
+html, body {
+  scroll-behavior: smooth; /* smooth scroll on anchor links */
+  overflow-y: scroll;       /* allow vertical scrolling */
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* Chrome/Safari */
+}
+
+.custom-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Tailwind container behavior for screens below 2xl */
+@media (min-width: 640px) {
+  .custom-container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .custom-container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .custom-container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .custom-container {
+    max-width: 1280px;
+  }
+}
+
+/* Custom max-width for 2xl and above */
+@media (min-width: 1536px) {
+  .custom-container {
+    max-width: 1520px;
+  }
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: 
+    url('/fonts/satoshi/Satoshi-Light.woff2') format('woff2'),
+    url('/fonts/satoshi/Satoshi-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: 
+    url('/fonts/satoshi/Satoshi-Regular.woff2') format('woff2'),
+    url('/fonts/satoshi/Satoshi-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: 
+    url('/fonts/satoshi/Satoshi-Medium.woff2') format('woff2'),
+    url('/fonts/satoshi/Satoshi-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: 
+    url('/fonts/satoshi/Satoshi-Bold.woff2') format('woff2'),
+    url('/fonts/satoshi/Satoshi-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: 
+    url('/fonts/satoshi/Satoshi-Variable.woff2') format('woff2'),
+    url('/fonts/satoshi/Satoshi-Variable.ttf') format('truetype');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  scrollbar-width: none; /* Firefox */
+  font-family: "Satoshi", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Utilities for gradients/effects seen in image if needed */
+@theme {
+  --color-brand-blue: #0ea5e9;
+  --color-brand-dark: #0f172a;
+}
+
+/* Custom Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-right {
+  from {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scan-bar {
+  0% {
+    height: 0%;
+  }
+  50% {
+    height: 100%;
+  }
+  100% {
+    height: 0%;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes progress {
+  from {
+    width: 0%;
+  }
+}
+
+@keyframes radar-sweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes radar-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    r: 1.5;
+  }
+  50% {
+    opacity: 1;
+    r: 2.5;
+  }
+}
+
+@keyframes lens-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes lens-focus {
+  0%, 100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes radar-arc {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-slide-right {
+  animation: slide-right 0.8s ease-out forwards;
+}
+
+.animate-scan-bar {
+  animation: scan-bar 2s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out forwards;
+}
+
+.animate-progress {
+  animation: progress 1.5s ease-out forwards;
+}
+
+.animate-radar-sweep {
+  animation: radar-sweep 3s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+.animate-radar-pulse {
+  animation: radar-pulse 2s ease-in-out infinite;
+}
+
+.animate-lens-pulse {
+  animation: lens-pulse 2s ease-in-out infinite;
+}
+
+.animate-lens-focus {
+  animation: lens-focus 2.5s ease-in-out infinite;
+}
+
+.animate-radar-arc {
+  animation: radar-arc 3s linear infinite;
+}
+
+/* Product hero embedded inside HomePageHero – merge into one section */
+.home-hero-embedded section {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+.home-hero-embedded section > div {
+  background: rgba(2, 6, 23, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 1rem !important;
+  backdrop-filter: blur(12px);
+}
+.glass-card {
+
+  background: rgba(255, 255, 255, 0.027); /* softer, lighter base */
+  backdrop-filter: blur(28px); /* slightly stronger blur for smoothness */
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.046); /* subtler border */
+
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease; /* smooth hover/interaction transitions */
+}
+
+.glass-card::before,
+.glass-card::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+.glass-card::before {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+}
+
+.glass-card::after {
+  top: 0;
+  left: 0;
+  width: 1.5px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
+}
+
+@keyframes scroll-down {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scroll-up {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.animate-scroll-down {
+  animation: scroll-down 60s linear infinite;
+}
+
+.animate-scroll-up {
+  animation: scroll-up 60s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shine {
+  animation: shine 5s linear infinite;
+}
