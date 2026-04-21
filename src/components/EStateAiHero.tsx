@@ -9,7 +9,6 @@ import {
   Play,
   Zap,
 } from "lucide-react";
-import { BiError } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import DotGrid from "@/components/dotgrid";
 
@@ -30,23 +29,6 @@ const heroItem = {
   visible: { opacity: 1, y: 0 },
 };
 
-/* ----------------------------------------
-   Events & Stats
----------------------------------------- */
-const EVENTS = [
-  { type: "warn", text: "Over-permissive IAM role detected" },
-  { type: "warn", text: "Unencrypted volume flagged" },
-  { type: "warn", text: "Unused security group found" },
-  { type: "fix", text: "Public storage access auto-blocked" },
-  { type: "fix", text: "CIS benchmark drift corrected" },
-];
-
-const STATS = [
-  { label: "Assets", value: 1200 },
-  { label: "Risks", value: 48 },
-  { label: "Resolved", value: 36 },
-  { label: "Alerts", value: 12 },
-];
 
 
 

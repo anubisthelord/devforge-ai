@@ -2,16 +2,14 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CallToAction from "@/components/CallToAction";
 import TestimonialsInnerPages from "@/components/TestimonialsInnerPages";
 import EStateAiHero from "@/components/EStateAiHero";
 import ToolOverviewSection, {
-  type ToolOverviewSectionProps,
 } from "@/components/Organisms/ToolOverviewSection";
 import HowToolWorksSection, {
   type HowToolWorksSectionProps,
 } from "@/components/HowToolWorksSection";
-import { AlertTriangle, Brain, FileCheck, Globe, Lock, MessageSquare, Scan, Shield, ShieldCheck, Target } from "lucide-react";
+import { AlertTriangle, Brain, FileCheck, House, MessageSquare, Scan, ShieldCheck } from "lucide-react";
 import ShineCardsSection from "@/components/ShineCardsSection";
 import VerticalTimeline from "@/components/VerticalTimeline";
 import PropAiOverview from "@/components/PropAiOverview";
@@ -59,7 +57,6 @@ const viraHowItWorksSteps: HowToolWorksSectionProps['steps'] = [
 
 ];
 
-import { Building2, Home, Landmark, MapPin } from "lucide-react";
 const frameworks = [
   {
     icon: Brain,
@@ -75,7 +72,7 @@ const frameworks = [
       "Generates personalized sales pitches instantly for every client–property match.",
   },
   {
-    icon: Home,
+    icon: House,
     name: "Smart Property Matching",
     description:
       "Recommends the right properties based on budget, location, and buyer preferences.",

@@ -2,22 +2,16 @@
 
 import { motion } from "framer-motion";
 import {
-  Cloud,
-  Network,
+ 
   Zap,
-  ArrowRight,
-  ShieldCheck,
+  
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
 /* ----------------------------------------
     Feature strip
 ---------------------------------------- */
-const FEATURES = [
-  { label: "AI client insights", icon: Network },
-  { label: "Smart property matching", icon: Zap },
-  { label: "Deal visibility", icon: Cloud },
-];
+
 
 export default function IanHero() {
   const random = (min: number, max: number) =>

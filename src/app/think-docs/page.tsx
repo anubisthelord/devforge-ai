@@ -19,7 +19,6 @@ import {
   Users,
   Workflow,
 } from "lucide-react";
-import ShineCardsSection from "@/components/ShineCardsSection";
 import VerticalTimeline from "@/components/VerticalTimeline";
 
 const thinkDocsSteps: ToolOverviewSectionProps["steps"] = [
@@ -141,7 +140,7 @@ export default function ThinkDocsPage() {
           footerStatus="Unified repository · Semantic search · Role-based access"
         />
 
-        <div className="max-w-7xl mx-auto rounded-4xl border-2 mt-12 overflow-hidden border-gray-900 shadow-xl shadow-gray-900/50">
+        <div className="max-w-7xl 2xl:max-w-[1440px] mx-auto rounded-4xl border-2 mt-12 overflow-hidden border-gray-900 border-dashed">
           <HowToolWorksSection
             eyebrow="How it works"
             accent="sky"

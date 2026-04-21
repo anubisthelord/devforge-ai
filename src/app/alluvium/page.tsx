@@ -202,11 +202,11 @@ export default function AlluviumPage() {
           footerStatus="11k+ invoices · 20+ formats · 76%+ accuracy on key fields"
         />
 
-        <div className="max-w-7xl mx-auto rounded-4xl border-2 my-12 overflow-hidden border border-white/5 bg-[#020617]">
+        <div className="max-w-7xl 2xl:max-w-[1440px] mx-auto rounded-4xl border-2 my-12 overflow-hidden border border-white/5 bg-[#020617] border-dashed">
           <HowToolWorksSection
             eyebrow="How Alluvium works"
             accent="emerald"
-            heading={<>From raw documents to finance-ready data.</>}
+            heading={<>From raw documents to <br /> finance-ready data.</>}
             description="Alluvium combines OCR, document understanding, and feedback-driven learning to continuously improve extraction quality while keeping humans in control of high-impact decisions."
             steps={alluviumHowItWorksSteps}
           />

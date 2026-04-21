@@ -141,13 +141,13 @@ export default function ElvisPage() {
           footerStatus="Leads ingested · Role-based workflows active"
         />
 
-        <div className="max-w-7xl mx-auto rounded-4xl border-2 my-12 overflow-hidden border-gray-900 shadow-xl shadow-gray-900/50">
+        <div className="max-w-7xl 2xl:max-w-[1440px] mx-auto rounded-4xl border-2 my-12 overflow-hidden border-gray-900 border-dashed">
           <HowToolWorksSection
             eyebrow="How it works"
             accent="sky"
             heading={
               <>
-                From scattered leads to one command center.
+                From scattered leads to <br /> one intelligent command center.
               </>
             }
             description="ELVIS connects discovery, assignment, and analytics in one workflow. Role-based access keeps everyone focused on their pipeline while managers get real-time visibility and AI-driven insights."

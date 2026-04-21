@@ -23,7 +23,7 @@ export type ProductId =
   | "alluvium"
   | "thinkdocs"
   | "demo-agent"
-  // | "estateai";
+  | "estateai";
 
 export type ProductConfig = {
   id: ProductId;
@@ -127,15 +127,15 @@ export const products: ProductConfig[] = [
     path: "/demo-agent",
     showInNavbar: true,
   },
-  // {
-  //   id: "estateai",
-  //   title: "PropIQ",
-  //   description:
-  //     "An AI-powered platform for real estate Agents / brokers to identify serious buyers, recommend the right properties, and generate personalized sales pitches in seconds.",
-  //   icon: House,
-  //   path: "/prop-iq",
-  //   showInNavbar: true,
-  // },
+  {
+    id: "estateai",
+    title: "PropIQ",
+    description:
+      "An AI-powered platform for real estate Agents / brokers to identify serious buyers, recommend the right properties, and generate personalized sales pitches in seconds.",
+    icon: House,
+    path: "/prop-iq",
+    showInNavbar: true,
+  },
 ];
 
 export const productsById: Record<ProductId, ProductConfig> = products.reduce(

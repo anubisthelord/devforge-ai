@@ -16,11 +16,10 @@ import {
   MessageCircle,
   Mic,
   Play,
-  RefreshCw,
   Video,
   Zap,
 } from "lucide-react";
-import PulseSection from "@/components/PulseSection";
+// import PulseSection from "@/components/PulseSection";
 import ShineCardsSection from "@/components/ShineCardsSection";
 
 const demoAgentSteps: ToolOverviewSectionProps["steps"] = [
@@ -81,20 +80,7 @@ const demoAgentHowItWorksSteps: HowToolWorksSectionProps["steps"] = [
   },
 ];
 
-const pulseCenterData = {
-  center: {
-    title: "STAGE Engine",
-    subtitle: "Scripted Tour Automation & Generation",
-  },
-  items: [
-    { id: 1, icon: Video, label: "Watch flows" },
-    { id: 2, icon: RefreshCw, label: "Capture steps" },
-    { id: 3, icon: Zap, label: "Generate demo" },
-    { id: 4, icon: Mic, label: "Narration" },
-    { id: 5, icon: Play, label: "AI voice" },
-    { id: 6, icon: MessageCircle, label: "Live Q&A" },
-  ],
-};
+
 
 const keyFeatures = [
   {
@@ -158,13 +144,13 @@ export default function DemoAgentPage() {
           footerStatus="Live-like demos · Docs-driven · AI voice + Live Q&A"
         />
 
-        <div className="max-w-7xl mx-auto rounded-4xl border-2 my-12 overflow-hidden border-gray-900 shadow-xl shadow-gray-900/50">
+        <div className="max-w-7xl 2xl:max-w-[1440px] mx-auto rounded-4xl border-2 my-12 overflow-hidden border-gray-900 border-dashed">
           <HowToolWorksSection
-            eyebrow="How it works"
+            eyebrow="How it works"  
             accent="emerald"
             heading={
               <>
-                From real user flows to polished, narrated walkthroughs.
+                From real user flows to <br /> polished, narrated walkthroughs.
               </>
             }
             description="STAGE captures how users move through your portal, auto-builds a demo flow, adds written narration and AI voice with matching timing, and lets your documentation govern what's shown. Run one-click walkthroughs and handle technical and non-technical questions in real time with Intelligent Live Q&A."
@@ -172,12 +158,12 @@ export default function DemoAgentPage() {
           />
         </div>
 
-        <PulseSection
+        {/* <PulseSection
           center={pulseCenterData.center}
           items={pulseCenterData.items}
-          sectionTitle="How STAGE Works"
+          sectionTitle="Product Demo Automation & Generation Engine"
           sectionDescription="STAGE turns any web portal into a live-like, narrated product demo—automatically. It watches real user flows, captures each step, generates a clean demo flow, and pairs it with written narration and AI voice so your demos feel human, consistent, and repeatable. Docs drive what's shown; Live Q&A keeps every audience in the loop."
-        />
+        /> */}
 
         <ShineCardsSection
           eyebrow="Key features"

@@ -135,17 +135,17 @@ function IanCardAnimation() {
 
 type NewsCard = {
   id:
-    | "autonomoai"
-    | "review-attendant"
-    | "attendai"
-    | "elvis"
-    | "thinkdocs"
-    | "demo-agent"
-    | "assetwisp"
-    | "slimsnap"
-    | "lotiq"
-    | "alluvium"
-    // | "estateai";
+  | "autonomoai"
+  | "review-attendant"
+  | "attendai"
+  | "elvis"
+  | "thinkdocs"
+  | "demo-agent"
+  | "assetwisp"
+  | "slimsnap"
+  | "lotiq"
+  | "alluvium"
+  | "estateai";
 };
 
 const newsCardsRowOne: NewsCard[] = [
@@ -173,10 +173,10 @@ const newsCardsRowTwo: NewsCard[] = [
   {
     id: "demo-agent",
   },
-  // {
-  //   id: "estateai",
-  // },
-  
+  {
+    id: "estateai",
+  },
+
 ];
 
 function AutonomoAIMiniAnimation() {
@@ -241,9 +241,8 @@ function ReviewAttendantMiniAnimation() {
           {[0.4, 0.6, 0.9, 0.7].map((height, idx) => (
             <motion.div
               key={idx}
-              className={`w-2 rounded-[6px] ${
-                idx === 2 ? "bg-emerald-400" : "bg-amber-300/90"
-              }`}
+              className={`w-2 rounded-[6px] ${idx === 2 ? "bg-emerald-400" : "bg-amber-300/90"
+                }`}
               style={{ height: `${height * 32}px` }}
               animate={{ scaleY: [0.7, 1.15, 0.85, 1] }}
               transition={{
@@ -393,8 +392,8 @@ function AssetWispMiniAnimation() {
                     color === "emerald"
                       ? "rgba(52,211,153,0.9)"
                       : color === "sky"
-                      ? "rgba(56,189,248,0.9)"
-                      : "rgba(196,181,253,0.9)"
+                        ? "rgba(56,189,248,0.9)"
+                        : "rgba(196,181,253,0.9)"
                   }
                 />
                 <stop offset="100%" stopColor="rgba(15,23,42,0)" />
@@ -485,88 +484,83 @@ function ElvisMiniAnimation() {
 }
 
 
-// function EStateAIMiniAnimation() {
-//   const stats = [
-//     { label: "Clients", value: "100+" },
-//     { label: "Deals", value: "50+" },
-//     { label: "ROI", value: "+18.3%" },
-//     { label: "Pitch success", value: "92%" },
-//   ];
+function EStateAIMiniAnimation() {
 
-//   return (
-//     <div className="mt-4 h-full rounded-xl border border-sky-400/25 bg-gradient-to-r from-slate-950 via-slate-950/85 to-sky-950/50 px-3 py-2 relative overflow-hidden">
 
-//     <div className="absolute inset-0 flex items-center justify-center">
-      
-//       <div className="relative h-16 w-16">
-  
-//         <motion.div
-//           className="absolute inset-0 rounded-full bg-sky-400/10 blur-lg"
-//           animate={{ opacity: [0.3, 0.6, 0.3] }}
-//           transition={{ duration: 3, repeat: Infinity }}
-//         />
-  
-//         <motion.div
-//           className="absolute inset-1 rounded-full border border-sky-400/25"
-//           animate={{ rotate: 360 }}
-//           transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-//         />
-  
-//         <motion.div
-//           className="absolute inset-0 rounded-full border border-sky-300/20"
-//           animate={{ scale: [0.8, 1.15], opacity: [0.6, 0] }}
-//           transition={{ duration: 2.8, repeat: Infinity }}
-//         />
-  
-//         <div className="absolute inset-0 flex items-center justify-center">
-//           <div className="flex items-center justify-center h-7 w-7 rounded-full bg-black/90 border border-sky-400/40">
-//             <MapPin className="h-3.5 w-3.5 text-sky-300" />
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-  
-//     {/* 🧠 TOP LEFT */}
-//     <motion.div
-//       className="absolute top-2  left-2 rounded-md border border-sky-400/20 bg-black/60 px-2 py-1"
-//       animate={{ opacity: [0.7, 1, 0.8] }}
-//       transition={{ duration: 2.2, repeat: Infinity }}
-//     >
-//       <p className="text-[9px] text-slate-400">Buyers</p>
-//       <p className="text-[11px] text-sky-200 font-medium">128 Active</p>
-//     </motion.div>
-  
-//     {/* 🧠 TOP RIGHT */}
-//     <motion.div
-//       className="absolute top-2 right-2 rounded-md border border-sky-400/20 bg-black/60 px-2 py-1 text-right"
-//       animate={{ opacity: [0.7, 1, 0.8] }}
-//       transition={{ duration: 2.4, repeat: Infinity }}
-//     >
-//       <p className="text-[9px] text-slate-400">Demand - High ↑</p>
-//     </motion.div>
-  
-//     {/* 🧠 BOTTOM LEFT */}
-//     <motion.div
-//       className="absolute bottom-2 left-2 rounded-md border border-sky-400/20 bg-black/60 px-2 py-1"
-//       animate={{ opacity: [0.7, 1, 0.8] }}
-//       transition={{ duration: 2.6, repeat: Infinity }}
-//     >
-//       <p className="text-[9px] text-slate-400">Sellers - 64 Live</p>
-//     </motion.div>
-  
-//     {/* 🧠 BOTTOM RIGHT */}
-//     <motion.div
-//       className="absolute bottom-2 right-2 rounded-md border border-sky-400/20 bg-black/60 px-2 py-1 text-right"
-//       animate={{ opacity: [0.7, 1, 0.8] }}
-//       transition={{ duration: 2.8, repeat: Infinity }}
-//     >
-//       <p className="text-[9px] text-slate-400">ROI</p>
-//       <p className="text-[11px] text-emerald-300 font-medium">+18.3%</p>
-//     </motion.div>
-  
-//   </div>
-//   );
-// }
+  return (
+    <div className="mt-4 h-full rounded-xl border border-sky-400/25 bg-gradient-to-r from-slate-950 via-slate-950/85 to-sky-950/50 px-3 py-2 relative overflow-hidden">
+
+      <div className="absolute inset-0 flex items-center justify-center">
+
+        <div className="relative h-16 w-16">
+
+          <motion.div
+            className="absolute inset-0 rounded-full bg-sky-400/10 blur-lg"
+            animate={{ opacity: [0.3, 0.6, 0.3] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          />
+
+          <motion.div
+            className="absolute inset-1 rounded-full border border-sky-400/25"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+          />
+
+          <motion.div
+            className="absolute inset-0 rounded-full border border-sky-300/20"
+            animate={{ scale: [0.8, 1.15], opacity: [0.6, 0] }}
+            transition={{ duration: 2.8, repeat: Infinity }}
+          />
+
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="flex items-center justify-center h-7 w-7 rounded-full bg-black/90 border border-sky-400/40">
+              <MapPin className="h-3.5 w-3.5 text-sky-300" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 🧠 TOP LEFT */}
+      <motion.div
+        className="absolute top-2  left-2 rounded-md border border-sky-400/20 bg-black/60 px-2 py-1"
+        animate={{ opacity: [0.7, 1, 0.8] }}
+        transition={{ duration: 2.2, repeat: Infinity }}
+      >
+        <p className="text-[9px] text-slate-400">Buyers</p>
+        <p className="text-[11px] text-sky-200 font-medium">128 Active</p>
+      </motion.div>
+
+      {/* 🧠 TOP RIGHT */}
+      <motion.div
+        className="absolute top-2 right-2 rounded-md border border-sky-400/20 bg-black/60 px-2 py-1 text-right"
+        animate={{ opacity: [0.7, 1, 0.8] }}
+        transition={{ duration: 2.4, repeat: Infinity }}
+      >
+        <p className="text-[9px] text-slate-400">Demand - High ↑</p>
+      </motion.div>
+
+      {/* 🧠 BOTTOM LEFT */}
+      <motion.div
+        className="absolute bottom-2 left-2 rounded-md border border-sky-400/20 bg-black/60 px-2 py-1"
+        animate={{ opacity: [0.7, 1, 0.8] }}
+        transition={{ duration: 2.6, repeat: Infinity }}
+      >
+        <p className="text-[9px] text-slate-400">Sellers - 64 Live</p>
+      </motion.div>
+
+      {/* 🧠 BOTTOM RIGHT */}
+      <motion.div
+        className="absolute bottom-2 right-2 rounded-md border border-sky-400/20 bg-black/60 px-2 py-1 text-right"
+        animate={{ opacity: [0.7, 1, 0.8] }}
+        transition={{ duration: 2.8, repeat: Infinity }}
+      >
+        <p className="text-[9px] text-slate-400">ROI</p>
+        <p className="text-[11px] text-emerald-300 font-medium">+18.3%</p>
+      </motion.div>
+
+    </div>
+  );
+}
 function AlluviumMiniAnimation() {
   // Document extraction preview — fields lighting up
   return (
@@ -830,41 +824,41 @@ function LotIQMiniAnimation() {
     <div className="mt-4 h-full rounded-xl border border-sky-400/25 bg-gradient-to-r from-slate-950 via-slate-950/80 to-sky-950/40 px-3 py-2">
       <div className="relative h-14 w-full overflow-hidden rounded-lg bg-slate-950/70">
         <div className="grid grid-cols-3 gap-[3px] p-[4px]">
-        {slots.map((_, idx) => (
-          <motion.div
-            key={idx}
-            className="relative h-4 rounded-[5px] border border-slate-700/80 bg-slate-900/80"
-            animate={{
-              backgroundColor: [
-                "rgba(15,23,42,0.9)",
-                idx % 2 === 0
-                  ? "rgba(22,163,74,0.9)"
-                  : "rgba(15,23,42,0.9)",
-                "rgba(15,23,42,0.9)",
-              ],
-            }}
-            transition={{
-              duration: 2.1,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: idx * 0.2,
-            }}
-          >
-            {idx === 1 || idx === 4 ? (
-              <motion.div
-                className="absolute inset-y-[1px] left-[1px] right-[1px] rounded-[4px] bg-gradient-to-r from-sky-300 to-emerald-300"
-                initial={{ x: "-10%" }}
-                animate={{ x: ["-5%", "5%", "-5%"] }}
-                transition={{
-                  duration: 1.8,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: idx === 1 ? 0.2 : 0.9,
-                }}
-              />
-            ) : null}
-          </motion.div>
-        ))}
+          {slots.map((_, idx) => (
+            <motion.div
+              key={idx}
+              className="relative h-4 rounded-[5px] border border-slate-700/80 bg-slate-900/80"
+              animate={{
+                backgroundColor: [
+                  "rgba(15,23,42,0.9)",
+                  idx % 2 === 0
+                    ? "rgba(22,163,74,0.9)"
+                    : "rgba(15,23,42,0.9)",
+                  "rgba(15,23,42,0.9)",
+                ],
+              }}
+              transition={{
+                duration: 2.1,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: idx * 0.2,
+              }}
+            >
+              {idx === 1 || idx === 4 ? (
+                <motion.div
+                  className="absolute inset-y-[1px] left-[1px] right-[1px] rounded-[4px] bg-gradient-to-r from-sky-300 to-emerald-300"
+                  initial={{ x: "-10%" }}
+                  animate={{ x: ["-5%", "5%", "-5%"] }}
+                  transition={{
+                    duration: 1.8,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: idx === 1 ? 0.2 : 0.9,
+                  }}
+                />
+              ) : null}
+            </motion.div>
+          ))}
         </div>
         <motion.div
           className="absolute bottom-1 right-2 rounded-full border border-emerald-400/40 bg-emerald-500/20 px-2 py-0.5 text-[10px] font-medium text-emerald-100"
@@ -900,8 +894,8 @@ function renderNewsCardAnimation(id: NewsCard["id"]) {
       return <SlimSnapMiniAnimation />;
     case "lotiq":
       return <LotIQMiniAnimation />;
-    // case "estateai":
-    //   return <EStateAIMiniAnimation />;
+    case "estateai":
+      return <EStateAIMiniAnimation />;
     default:
       return null;
   }
@@ -931,9 +925,9 @@ function renderNewsCardIcon(id: NewsCard["id"]) {
       return <Apple className={commonIconClasses} />;
     case "lotiq":
       return <Car className={commonIconClasses} />;
-    // case "estateai":
-    //   return <Users className={commonIconClasses} />;
-    // default:
+    case "estateai":
+      return <Users className={commonIconClasses} />;
+    default:
       return null;
   }
 }
@@ -1106,7 +1100,7 @@ export default function ProductSection() {
               thinkdocs: "/think-docs",
               "demo-agent": "/demo-agent",
               alluvium: "/alluvium",
-              // estateai: "/prop-iq",
+              estateai: "/prop-iq",
             } as const;
 
             const renderCard = (card: NewsCard, index: number) => {
@@ -1116,7 +1110,7 @@ export default function ProductSection() {
               // Safety check: skip rendering if product is not found
               if (!product) {
                 console.warn(`Product not found for card ID: ${card.id}`);
-              
+
                 return (
                   <div
                     key={card.id}
@@ -1135,7 +1129,7 @@ export default function ProductSection() {
                         </p>
                       </div>
                     </div>
-              
+
                     <div className="mt-auto text-[11px] text-red-400/70">
                       Add this to <span className="font-mono">productsById</span>
                     </div>
@@ -1192,7 +1186,7 @@ export default function ProductSection() {
               );
             };
 
-            
+
 
             return (
               <>
@@ -1207,7 +1201,7 @@ export default function ProductSection() {
               </>
             );
           })()}
-          
+
         </div>
 
       </div>

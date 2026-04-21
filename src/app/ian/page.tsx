@@ -164,8 +164,9 @@ export default function IanPage() {
         <PulseSection
           center={pulseCenterData.center}
           items={pulseCenterData.items}
-          sectionTitle="How Our AI Works"
-          sectionDescription="Our AI operates as a continuously evolving intelligence layer at the core of your system. It ingests real-time signals across users, devices, and applications, analyzes behavioral patterns, detects anomalies, and takes proactive action before risks escalate. With every interaction, the model learns, adapts, and strengthens decision accuracy — ensuring faster responses, reduced false positives, and resilient protection at scale."
+          sectionTitle="AI Intelligence Pipeline"
+
+          sectionDescription="Our system operates as a continuous intelligence pipeline that transforms raw signals into actionable insights in real time. It processes data from users, applications, and infrastructure layers, identifies behavioral patterns, detects anomalies, and executes proactive responses before issues escalate. With every cycle, the model refines its understanding, improves prediction accuracy, and reduces false positives — ensuring a self-improving, resilient AI system at scale."
 
         />
 

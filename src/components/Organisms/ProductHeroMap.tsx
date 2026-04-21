@@ -11,10 +11,10 @@ import ElvisHero from "@/components/ElvisHero";
 import ThinkDocsHero from "@/components/ThinkDocsHero";
 import AlluviumHero from "@/components/AlluviumHero";
 import DemoAgentHero from "@/components/DemoAgentHero";
-// import EStateAiHero from "../EStateAiHero";
+import EStateAiHero from "../EStateAiHero";
 
 const heroMap: Record<ProductId, React.ComponentType> = {
-  // estateai: EStateAiHero,
+  estateai: EStateAiHero,
   rex: RexHero,
   ian: IanHero,
   vira: ViraHero,

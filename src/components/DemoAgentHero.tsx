@@ -2,263 +2,288 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Play, Mic, FileText, ArrowRight, ShieldCheck } from "lucide-react";
-import { productsById } from "@/config/products";
+import {
+  Play,
+  Mic,
+  FileText,
+  ArrowRight,
+  ShieldCheck,
+} from "lucide-react";
+import DotGrid from "@/components/dotgrid";
 
+/* ---------------- DATA ---------------- */
 const FEATURES = [
   { label: "One-click walkthroughs", icon: Play },
   { label: "AI voice narration", icon: Mic },
   { label: "Docs-driven control", icon: FileText },
 ];
 
-const PARTICLE_CONFIGS = [...Array(12)].map(() => ({
-  top: 20 + Math.random() * 60,
-  left: 20 + Math.random() * 60,
-  duration: 3 + Math.random() * 3,
-  delay: Math.random() * 2,
-}));
+
+
+/* ---------------- MOTION ---------------- */
+const container = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { staggerChildren: 0.1, duration: 0.6 },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function DemoAgentHero() {
-  const stageProduct = productsById["demo-agent"];
-
   return (
-    <section className="relative overflow-hidden bg-[#07090E] py-8 lg:py-12">
-      {/* Ambient glow */}
-      <motion.div
-        className="pointer-events-none absolute -top-1/2 -right-1/4 h-[120%] w-[80%] rounded-full bg-emerald-500/20 blur-[140px]"
-        animate={{ opacity: [0.25, 0.5, 0.25] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+    <section className="relative overflow-hidden bg-[#020617] py-12 lg:py-16 xl:py-24 2xl:py-32">
+
+      {/* DOT GRID BACKGROUND (FIXED) */}
+      <DotGrid
+        className="absolute inset-0 w-full h-full z-0 pointer-events-none"
+        dotSize={4}
+        gap={18}
+        baseColor="#0B1220"
+        activeColor="#34D399"
+        proximity={240}
+        shockRadius={200}
+        shockStrength={3}
+        resistance={400}
+        returnDuration={1.4}
+        autoMode
       />
 
-      <div className="relative max-w-7xl 2xl:max-w-[1440px] mx-auto rounded-4xl border border-white/5 bg-[#020617] px-4 py-8 lg:py-12 lg:p-8">
-        <motion.div className="grid grid-cols-1 lg:grid-cols-4 items-center gap-12">
-          {/* LEFT */}
-          <div
-            className="order-2 lg:order-none lg:col-span-2 space-y-4
-              text-center lg:text-left"
-          >
-            <div
-              className="inline-flex items-center gap-2
-                mx-auto lg:mx-0
-                rounded-full border border-white/10
-                bg-white/5 px-3 py-1
-                text-[10px] text-emerald-200"
+      {/* soft glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(16,185,129,0.15),transparent_60%)]" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="visible"
+          className="grid lg:grid-cols-2 gap-12 items-center"
+        >
+
+          {/* ================= LEFT ================= */}
+          <div className="text-center lg:text-left space-y-6">
+
+            <motion.div
+              variants={item}
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-emerald-200"
             >
-              <Play className="h-3 w-3 text-emerald-300" />
-              <span className="uppercase tracking-[0.18em] text-[10px]">
-                Scripted Tour Automation • AI voice • Live Q&A
+              <Play className="h-3.5 w-3.5 text-emerald-400" />
+              AI Demo Automation Engine
+            </motion.div>
+
+            <motion.h1
+              variants={item}
+              className="text-white font-semibold text-[28px] sm:text-[36px] lg:text-[44px] leading-[1.1]"
+            >
+              Turn product flows into
+              <span className="bg-gradient-to-r from-emerald-300 to-emerald-500 bg-clip-text text-transparent">
+                {" "}interactive AI demos
               </span>
-            </div>
+            </motion.h1>
 
-            <h2
-              className="font-semibold tracking-snug text-white
-                text-[26px] leading-[1.1]
-                sm:text-[28px]
-                md:text-[32px]
-                lg:text-[36px]
-                xl:text-[40px]"
+            <motion.p
+              variants={item}
+              className="text-white/65 max-w-md mx-auto lg:mx-0 text-sm sm:text-base"
             >
-              Turn any web portal into{" "}
-              <span className="text-emerald-400">
-                a live-like, narrated product demo
-              </span>
-            </h2>
+              Capture real user journeys, convert them into structured demo flows,
+              and generate AI narration automatically for consistent product storytelling.
+            </motion.p>
 
-            <p
-              className="lg:mx-0
-                w-full sm:max-w-md mx-auto
-                text-[14px] sm:text-sm md:text-base
-                leading-relaxed text-white/65"
+            <motion.div
+              variants={item}
+              className="flex flex-wrap gap-3 justify-center lg:justify-start text-sm text-white/70"
             >
-              {stageProduct.description} STAGE watches real user flows, captures
-              each step, generates a clean demo flow, and pairs it with{" "}
-              <span className="text-white/85 font-medium">
-                written narration and AI voice
-              </span>{" "}
-              so your demos feel human, consistent, and repeatable.
-            </p>
-
-            <div
-              className="flex flex-wrap gap-3
-                justify-center lg:justify-start text-sm text-white/70"
-            >
-              {FEATURES.map((item, i) => {
-                const Icon = item.icon;
+              {FEATURES.map((f, i) => {
+                const Icon = f.icon;
                 return (
-                  <div key={item.label} className="flex items-center gap-4">
-                    <span className="flex items-center gap-2 font-medium">
-                      <Icon className="h-4 w-4 text-emerald-400" />
-                      {item.label}
-                    </span>
+                  <div key={f.label} className="flex items-center gap-2">
+                    <Icon className="h-4 w-4 text-emerald-400" />
+                    {f.label}
                     {i !== FEATURES.length - 1 && (
-                      <span className="hidden sm:block h-4 w-px bg-white/15" />
+                      <span className="h-4 w-px bg-white/10 ml-3" />
                     )}
                   </div>
                 );
               })}
-            </div>
+            </motion.div>
 
-            <div
-              className="flex items-center gap-4 pt-4
-                justify-center lg:justify-start"
+            <motion.div
+              variants={item}
+              className="flex gap-4 justify-center lg:justify-start"
             >
               <Link
                 href="/book-demo"
-                className="inline-flex items-center gap-2 rounded-xl
-                  bg-emerald-500 px-5 py-3 text-sm font-medium text-black
-                  hover:bg-emerald-400 transition"
+                className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-black px-6 py-3 rounded-xl text-sm font-medium transition"
               >
-                See STAGE in action
+                See live demo
                 <ArrowRight className="h-4 w-4" />
               </Link>
+
               <span className="flex items-center gap-2 text-xs text-white/55">
                 <ShieldCheck className="h-4 w-4 text-emerald-400" />
-                Live-like demos · AI voice
+                AI narration enabled
               </span>
-            </div>
+            </motion.div>
           </div>
+          <div className="relative flex items-center justify-center">
+  <motion.div
+    className="relative w-full max-w-md h-[450px] rounded-2xl border border-white/10 bg-[#020617]/80 backdrop-blur-2xl overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.4)]"
+    animate={{ y: [0, -3, 0] }}
+    transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+  >
+    {/* SOFT DEPTH LAYER */}
+    <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/5 via-transparent to-transparent opacity-60" />
 
-          {/* RIGHT — DEMO AGENT ANIMATION */}
-          <div className="col-span-1 lg:col-span-2 relative border border-white/10 shadow-2xl p-2 rounded-2xl order-1 lg:order-none">
-            <div className="h-[320px] lg:h-[460px] relative flex items-center justify-center">
-              <motion.div className="relative h-[90%] w-full max-w-xl overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-[#020617] via-[#020617] to-black">
-                {/* Outer glow frame */}
-                <motion.div
-                  className="absolute inset-6 rounded-2xl border border-emerald-400/15"
-                  animate={{ opacity: [0.2, 0.5, 0.2] }}
-                  transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                />
+    {/* GRID */}
+    <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_1px_1px,rgba(52,211,153,0.18)_1px,transparent_0)] [background-size:18px_18px]" />
 
-                {/* Vertical flow spine */}
-                <motion.div
-                  className="absolute left-1/2 top-10 bottom-10 w-[2px] -translate-x-1/2 bg-gradient-to-b from-transparent via-emerald-400/60 to-transparent"
-                  animate={{ opacity: [0.3, 0.9, 0.3] }}
-                  transition={{ duration: 4.5, repeat: Infinity }}
-                />
+    {/* floating micro nodes (adds life) */}
+    {[...Array(10)].map((_, i) => (
+      <motion.div
+        key={i}
+        className="absolute h-1 w-1 rounded-full bg-emerald-400/40"
+        style={{
+          top: `${10 + i * 8}%`,
+          left: `${10 + (i % 5) * 18}%`,
+        }}
+        animate={{
+          opacity: [0.2, 0.8, 0.2],
+          scale: [1, 1.4, 1],
+        }}
+        transition={{
+          duration: 3 + i * 0.2,
+          repeat: Infinity,
+        }}
+      />
+    ))}
 
-                {/* LEFT: CAPTURE STREAMS */}
-                {[0, 1, 2, 3].map((i) => (
-                  <motion.div
-                    key={`capture-${i}`}
-                    className="absolute left-0 h-[1px] w-[45%] bg-gradient-to-r from-transparent to-emerald-400/60"
-                    style={{ top: 120 + i * 55 }}
-                    animate={{ opacity: [0, 1, 0], x: [-40, 0] }}
-                    transition={{
-                      duration: 2.4,
-                      delay: i * 0.4,
-                      repeat: Infinity,
-                      repeatDelay: 2,
-                      ease: "easeOut",
-                    }}
-                  />
-                ))}
+    {/* HEADER */}
+    <div className="absolute top-4 left-4 right-4 flex justify-between items-center">
+      <p className="text-[10px] text-white/50 tracking-[0.25em] uppercase">
+        STAGE AI Engine
+      </p>
+      <span className="text-[10px] text-emerald-400 flex items-center gap-1">
+        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+        Live
+      </span>
+    </div>
 
-                {/* RIGHT: NARRATION STREAMS */}
-                {[0, 1, 2].map((i) => (
-                  <motion.div
-                    key={`narrate-${i}`}
-                    className="absolute right-0 h-[1px] w-[45%] bg-gradient-to-l from-transparent to-emerald-400/55"
-                    style={{ top: 140 + i * 65 }}
-                    animate={{ opacity: [0, 1, 0], x: [40, 0] }}
-                    transition={{
-                      duration: 2.8,
-                      delay: 1.2 + i * 0.5,
-                      repeat: Infinity,
-                      repeatDelay: 2,
-                      ease: "easeOut",
-                    }}
-                  />
-                ))}
+    {/* STAGE 1 */}
+    <motion.div
+      className="absolute left-4 top-[18%] w-[42%] rounded-xl border border-white/10 bg-white/5 p-3"
+      animate={{ opacity: [0.7, 1, 0.7] }}
+      transition={{ duration: 3, repeat: Infinity }}
+    >
+      <p className="text-[10px] text-white/60 mb-2">Capture Layer</p>
 
-                {/* CENTER AGENT */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                  <motion.div
-                    className="flex h-20 w-20 items-center justify-center rounded-full border border-emerald-400/35 bg-[#020617] shadow-[0_0_80px_rgba(16,185,129,0.45)]"
-                    animate={{
-                      scale: [1, 1.08, 1],
-                      boxShadow: [
-                        "0 0 40px rgba(16,185,129,0.3)",
-                        "0 0 120px rgba(16,185,129,0.55)",
-                        "0 0 40px rgba(16,185,129,0.3)",
-                      ],
-                    }}
-                    transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    <Play className="h-9 w-9 text-emerald-400" />
-                  </motion.div>
-                </div>
-
-                {/* ORBITING STEPS */}
-                {[0, 1, 2, 3].map((i) => (
-                  <motion.div
-                    key={`step-${i}`}
-                    className="absolute left-1/2 top-1/2 h-3 w-3 rounded-full bg-emerald-400"
-                    animate={{
-                      rotate: 360,
-                    }}
-                    transition={{
-                      duration: 8 + i * 2,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                    style={{
-                      transformOrigin: `${80 + i * 18}px center`,
-                    }}
-                  />
-                ))}
-
-                {/* PULSE RING */}
-                <motion.div
-                  className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full border border-emerald-400/25"
-                  animate={{ scale: [0.7, 1.5], opacity: [0.6, 0] }}
-                  transition={{
-                    duration: 2.4,
-                    repeat: Infinity,
-                    repeatDelay: 3.5,
-                    ease: "easeOut",
-                  }}
-                />
-
-                {/* FEATURE CHIPS */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3">
-                  {[
-                    { label: "Capture", icon: Play },
-                    { label: "Narrate", icon: Mic },
-                    { label: "Run", icon: FileText },
-                  ].map((item, i) => (
-                    <motion.div
-                      key={item.label}
-                      className="flex items-center gap-2 rounded-full bg-[#0b111c]/90 border border-emerald-400/25 px-4 py-1 text-xs text-white"
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.6 + i * 0.2 }}
-                    >
-                      <item.icon className="h-4 w-4 text-emerald-400" />
-                      {item.label}
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* PARTICLES */}
-                {PARTICLE_CONFIGS.map((config, i) => (
-                  <motion.div
-                    key={`particle-${i}`}
-                    className="absolute h-1.5 w-1.5 rounded-full bg-emerald-400/70"
-                    style={{
-                      top: `${config.top}%`,
-                      left: `${config.left}%`,
-                    }}
-                    animate={{ opacity: [0, 1, 0], scale: [0.6, 1, 0.6] }}
-                    transition={{
-                      duration: config.duration,
-                      repeat: Infinity,
-                      delay: config.delay,
-                    }}
-                  />
-                ))}
-              </motion.div>
-            </div>
+      <div className="space-y-2">
+        {[1, 2, 3].map((i) => (
+          <div key={i} className="space-y-1">
+            <motion.div
+              className="h-1.5 rounded bg-emerald-400/30"
+              animate={{ width: ["40%", "100%", "60%"] }}
+              transition={{ duration: 2 + i * 0.2, repeat: Infinity }}
+            />
+            <div className="h-1 w-2/3 bg-white/5 rounded" />
           </div>
+        ))}
+      </div>
+    </motion.div>
+
+    {/* FLOW */}
+    <motion.div
+      className="absolute left-1/2 top-[30%] -translate-x-1/2 text-emerald-400/70"
+      animate={{ y: [0, 4, 0] }}
+      transition={{ duration: 2.5, repeat: Infinity }}
+    >
+      ↓
+    </motion.div>
+
+    {/* STAGE 2 */}
+    <motion.div
+      className="absolute left-1/2 -translate-x-1/2 top-[38%] w-[70%] rounded-xl border border-emerald-400/15 bg-emerald-500/10 p-3"
+      animate={{
+        boxShadow: [
+          "0 0 0px rgba(16,185,129,0.08)",
+          "0 0 25px rgba(16,185,129,0.18)",
+          "0 0 0px rgba(16,185,129,0.08)",
+        ],
+      }}
+      transition={{ duration: 4, repeat: Infinity }}
+    >
+      <p className="text-[10px] text-emerald-300 mb-2">
+        AI Understanding Layer
+      </p>
+
+      {/* richer processing visualization */}
+      <div className="space-y-2">
+        {[1, 2, 3, 4].map((i) => (
+          <motion.div
+            key={i}
+            className="h-1.5 rounded bg-emerald-400/20 origin-left"
+            animate={{ scaleX: [0.3, 1, 0.5] }}
+            transition={{ duration: 2 + i * 0.2, repeat: Infinity }}
+          />
+        ))}
+      </div>
+
+      {/* tiny activity log */}
+      <div className="mt-2 space-y-1">
+        <p className="text-[9px] text-white/40">• parsing intent</p>
+        <p className="text-[9px] text-white/40">• mapping structure</p>
+      </div>
+    </motion.div>
+
+    {/* FLOW */}
+    <motion.div
+      className="absolute left-1/2 top-[55%] -translate-x-1/2 text-emerald-400/60"
+      animate={{ y: [0, 4, 0] }}
+      transition={{ duration: 2.5, repeat: Infinity }}
+    >
+      ↓
+    </motion.div>
+
+    {/* STAGE 3 */}
+    <motion.div
+      className="absolute right-4 top-[62%] w-[42%] rounded-xl border border-white/10 bg-white/5 p-3"
+      animate={{ opacity: [0.7, 1, 0.7] }}
+      transition={{ duration: 3, repeat: Infinity }}
+    >
+      <p className="text-[10px] text-white/60 mb-2">Output Layer</p>
+
+      <div className="space-y-2">
+        <div className="h-2.5 w-full rounded bg-white/10" />
+        <div className="h-2 w-4/5 rounded bg-white/10" />
+        <div className="h-2 w-2/3 rounded bg-white/10" />
+      </div>
+
+      {/* subtle result tags */}
+      <div className="mt-2 flex gap-1 flex-wrap">
+        <span className="text-[8px] px-1.5 py-[2px] rounded bg-emerald-400/10 text-emerald-300">
+          structured
+        </span>
+        <span className="text-[8px] px-1.5 py-[2px] rounded bg-emerald-400/10 text-emerald-300">
+          realtime
+        </span>
+      </div>
+    </motion.div>
+
+    {/* CORE */}
+    <motion.div
+      className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/10 border border-emerald-400/20 flex items-center justify-center shadow-[0_0_60px_rgba(16,185,129,0.25)]"
+      animate={{ scale: [1, 1.05, 1] }}
+      transition={{ duration: 4, repeat: Infinity }}
+    >
+      <Play className="h-6 w-6 text-emerald-400" />
+    </motion.div>
+  </motion.div>
+</div>
+
         </motion.div>
       </div>
     </section>

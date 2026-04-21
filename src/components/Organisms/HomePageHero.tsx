@@ -22,7 +22,7 @@ const RIGHT_COLUMN_IDS: ProductId[] = [
   "thinkdocs",
   "alluvium",
   "demo-agent",
-  // "estateai",
+  "estateai",
 ];
 
 const defaultHero = {

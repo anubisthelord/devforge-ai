@@ -3,7 +3,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AutonomoAIHero from "@/components/AutonomoAiHero";
-import ToolOverviewSection from "@/components/Organisms/ToolOverviewSection";
 import AutonomoAIOverview from "@/components/AutonomoAiOverview";
 import AutonomoAIKeyBenefitsNarrative from "@/components/AutonomoAiKeyBenefits";
 import TestimonialsInnerPages from "@/components/TestimonialsInnerPages";
