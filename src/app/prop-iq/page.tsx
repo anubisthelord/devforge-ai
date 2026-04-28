@@ -108,7 +108,7 @@ const benefits = [
     icon: Brain,
     title: "Generate Pitch",
     description:
-      "A personalized sales pitch is generated automatically — tailored to the client's goals and matched property that can be send by via Email / WhatsApp / SMS  etc.",
+      "A personalized sales pitch is generated automatically — tailored to the client's goals and matched property that can be send by via Email / WhatsApp  etc.",
   },
 
 ];
