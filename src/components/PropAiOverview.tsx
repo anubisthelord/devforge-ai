@@ -26,19 +26,7 @@ export default function EstateAIOverview() {
       title: "Intelligent property recommendations",
       desc: "Automatically match the right properties to the right clients based on budget, location, and preferences.",
     },
-    // {
-    //   title: "End-to-end deal tracking",
-    //   desc: "Track every stage of the deal lifecycle—from first inquiry to closure—with complete visibility and control.",
-    // },
-    // {
-    //   title: "Real-time AI sales insights",
-    //   desc: "Get actionable feedback on client engagement, pitch effectiveness, and property fit to improve your sales strategy.",
-    // },
    
-    // {
-    //   title: "Chatbot functionality",
-    //   desc: "A chatbot is available to answer questions and help with the client management and property recommendations.",
-    // },
     {
       title: "Centralized broker dashboard",
       desc: "Manage all clients, properties, and interactions in one unified dashboard with real-time updates.",

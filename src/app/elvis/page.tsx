@@ -164,7 +164,7 @@ export default function ElvisPage() {
             heading="Everything your sales team needs in one platform."
             subheading="ELVIS unifies discovery, assignment, tracking, and insights so you can close more deals with less manual work. Keyword-driven automation, role-based workflows, and AI-powered analytics all in one place."
             items={benefits}
-            accentColorClass="emerald"
+          
           />
         </div>
         <TestimonialsInnerPages />

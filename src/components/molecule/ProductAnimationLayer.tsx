@@ -230,6 +230,41 @@ export default function ProductAnimationLayer({
         </div>
       );
 
+
+
+    /* ============================= */
+/* 🧪 Pulse AI – Assessment Wave */
+/* ============================= */
+case "pulse-ai":
+  return (
+    <div className="relative w-full h-full flex items-center justify-center">
+      {[0, 1, 2, 3].map((i) => (
+        <motion.div
+          key={i}
+          className="absolute w-16 h-16 border border-emerald-400 rounded-full"
+          animate={{ scale: [0.4, 1.8], opacity: [0.7, 0] }}
+          transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.5 }}
+        />
+      ))}
+    </div>
+  );
+
+/* ============================= */
+/* 📊 Presales – Funnel Bars    */
+/* ============================= */
+case "presales":
+  return (
+    <div className="relative w-full h-full flex flex-col items-center justify-center gap-1">
+      {[40, 30, 20, 12].map((w, i) => (
+        <motion.div
+          key={i}
+          className="h-2 bg-emerald-400/60 rounded"
+          animate={{ width: [`${w}%`, `${w + 6}%`, `${w}%`] }}
+          transition={{ duration: 2, repeat: Infinity, delay: i * 0.15 }}
+        />
+      ))}
+    </div>
+  );
     default:
       return null;
   }

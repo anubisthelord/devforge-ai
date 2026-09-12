@@ -237,7 +237,7 @@ export default function AlluviumPage() {
           heading="Stay audit-ready with automated compliance checks"
           subheading="Alluvium helps you keep document processing and extracted data aligned to industry security and privacy frameworks—simplifying audits and reducing compliance risk."
           items={futureUpdates}
-          accentColorClass="emerald"
+        
         />
         </div>
         <TestimonialsInnerPages />

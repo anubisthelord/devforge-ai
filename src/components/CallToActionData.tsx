@@ -49,7 +49,7 @@ export default function CallToAction({
 
         {/* Description */}
         {description && (
-          <p className="text-[#FFFFFF99] font-light max-w-xs md:max-w-none mx-auto">
+          <p className="text-[#FFFFFF99] font-light max-w-xs md:max-w-none mx-auto text-base">
             {description}
           </p>
         )}

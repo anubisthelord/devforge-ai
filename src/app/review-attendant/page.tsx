@@ -102,7 +102,7 @@ export default function ReviewAttendantPage() {
           heading="Everything you need for review management and reputation"
           subheading="Review Attendant brings multi-platform reviews, AI-driven sentiment analysis, and personalized responses together so you can maintain a strong online reputation through timely customer engagement."
           items={reviewAttendantBenefits}
-          accentColorClass="emerald"
+        
         />
        </div>
 

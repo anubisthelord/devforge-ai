@@ -61,6 +61,107 @@ function RexCardAnimation() {
   );
 }
 
+function PulseAiMiniAnimation() {
+  // Assessment wave + readiness score ring
+  return (
+    <div className="mt-4 h-full rounded-xl border border-emerald-400/25 bg-gradient-to-r from-slate-950 via-slate-950/80 to-emerald-950/40 px-3 py-2">
+      <div className="flex items-center gap-3">
+        {/* readiness ring */}
+        <div className="relative h-12 w-12 shrink-0">
+          <svg viewBox="0 0 36 36" className="h-full w-full rotate-[-90deg]">
+            <path
+              d="M18 2.5a15.5 15.5 0 1 1 0 31 15.5 15.5 0 0 1 0-31"
+              fill="none"
+              stroke="rgba(148,163,184,0.25)"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+            <motion.path
+              d="M18 2.5a15.5 15.5 0 1 1 0 31 15.5 15.5 0 0 1 0-31"
+              fill="none"
+              stroke="url(#pulse-ring-grad)"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeDasharray="97"
+              strokeDashoffset="30"
+              animate={{ strokeDashoffset: [40, 22, 32] }}
+              transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <defs>
+              <linearGradient id="pulse-ring-grad" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stopColor="#34d399" />
+                <stop offset="100%" stopColor="#38bdf8" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <div className="absolute inset-0 flex flex-col items-center justify-center rotate-[90deg]">
+            <span className="text-[10px] font-semibold text-emerald-200">72</span>
+          </div>
+        </div>
+
+        {/* question waves */}
+        <div className="flex-1 space-y-1.5">
+          {["Context", "Maturity", "Signals"].map((label, idx) => (
+            <motion.div
+              key={label}
+              className="flex items-center justify-between rounded-md bg-black/50 border border-emerald-400/20 px-2 py-1"
+              animate={{ opacity: [0.6, 1, 0.7], x: [0, 2, 0] }}
+              transition={{
+                duration: 2 + idx * 0.25,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <span className="text-[10px] text-emerald-100/80">{label}</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PresalesMiniAnimation() {
+  // Lead score + funnel bars
+  return (
+    <div className="mt-4 h-full rounded-xl border border-emerald-400/25 bg-gradient-to-r from-slate-950 via-slate-950/80 to-emerald-950/40 px-3 py-2">
+      <div className="flex items-center gap-3">
+        <div className="flex-1">
+          <div className="flex items-center justify-between text-[10px] text-emerald-100/80 mb-1">
+            <span>Lead score</span>
+            <span className="text-emerald-300 font-semibold">87 · Tier A</span>
+          </div>
+          <div className="flex items-end gap-[3px] h-10">
+            {[30, 55, 40, 70, 60, 85, 95].map((h, idx) => (
+              <motion.div
+                key={idx}
+                className="flex-1 rounded-full bg-emerald-400/90"
+                animate={{
+                  height: [`${h * 0.6}%`, `${h}%`, `${h * 0.7}%`],
+                  opacity: [0.5, 1, 0.6],
+                }}
+                transition={{
+                  duration: 1.8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: idx * 0.06,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col items-end gap-1">
+          <span className="text-[9px] text-emerald-100/75">Intent</span>
+          <span className="rounded-full bg-emerald-500/20 border border-emerald-400/40 px-2 py-[2px] text-[10px] text-emerald-50">
+            82 · Meeting-ready
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ViraCardAnimation() {
   return (
     <div className="h-full rounded-xl border border-sky-400/35 bg-gradient-to-r from-slate-950 via-slate-950/80 to-sky-950/40 px-3 py-2">
@@ -135,50 +236,59 @@ function IanCardAnimation() {
 
 type NewsCard = {
   id:
-  | "autonomoai"
-  | "review-attendant"
-  | "attendai"
-  | "elvis"
-  | "thinkdocs"
-  | "demo-agent"
-  | "assetwisp"
-  | "slimsnap"
-  | "lotiq"
-  | "alluvium"
-  | "estateai";
+    | "rex"
+    | "vira"
+    | "ian"
+    | "autonomoai"
+    | "review-attendant"
+    | "attendai"
+    | "elvis"
+    | "thinkdocs"
+    | "demo-agent"
+    | "assetwisp"
+    | "slimsnap"
+    | "lotiq"
+    | "alluvium"
+    | "estateai"
+    | "pulse-ai"
+    | "presales";
 };
 
-const newsCardsRowOne: NewsCard[] = [
-  {
-    id: "autonomoai",
-  },
-  {
-    id: "review-attendant",
-  },
-  {
-    id: "attendai",
-  },
+// ✅ Single flat list, in display order
+const allNewsCards: NewsCard[] = [
+  { id: "rex" },
+  { id: "vira" },
+  { id: "ian" },
+  { id: "autonomoai" },
+  { id: "review-attendant" },
+  { id: "attendai" },
+  { id: "elvis" },
+  { id: "thinkdocs" },
+  { id: "alluvium" },
+  { id: "demo-agent" },
+  { id: "estateai" },
+  { id: "pulse-ai" },
+  { id: "presales" },
 ];
 
-const newsCardsRowTwo: NewsCard[] = [
-  {
-    id: "elvis",
-  },
-  {
-    id: "thinkdocs",
-  },
-  {
-    id: "alluvium",
-  },
-  {
-    id: "demo-agent",
-  },
-  {
-    id: "estateai",
-  },
-
-];
-
+const productPages: Record<NewsCard["id"], string> = {
+  rex: "/rex",
+  vira: "/vira",
+  ian: "/ian",
+  autonomoai: "/autonomoai",
+  "review-attendant": "/review-attendant",
+  attendai: "/attendai",
+  elvis: "/elvis",
+  thinkdocs: "/think-docs",
+  alluvium: "/alluvium",
+  "demo-agent": "/demo-agent",
+  estateai: "/prop-iq",
+  "pulse-ai": "/pulse-ai",
+  presales: "/presales",
+  assetwisp: "",
+  slimsnap: "",
+  lotiq: ""
+};
 function AutonomoAIMiniAnimation() {
   // Graph of connected knowledge nodes / queries
   const nodes = [
@@ -874,61 +984,46 @@ function LotIQMiniAnimation() {
 
 function renderNewsCardAnimation(id: NewsCard["id"]) {
   switch (id) {
-    case "thinkdocs":
-      return <ThinkDocsMiniAnimation />;
-    case "autonomoai":
-      return <AutonomoAIMiniAnimation />;
-    case "review-attendant":
-      return <ReviewAttendantMiniAnimation />;
-    case "attendai":
-      return <AttendAIMiniAnimation />;
-    case "elvis":
-      return <ElvisMiniAnimation />;
-    case "alluvium":
-      return <AlluviumMiniAnimation />;
-    case "demo-agent":
-      return <DemoAgentMiniAnimation />;
-    case "assetwisp":
-      return <AssetWispMiniAnimation />;
-    case "slimsnap":
-      return <SlimSnapMiniAnimation />;
-    case "lotiq":
-      return <LotIQMiniAnimation />;
-    case "estateai":
-      return <EStateAIMiniAnimation />;
-    default:
-      return null;
+    case "rex":            return <RexCardAnimation />;
+    case "vira":           return <ViraCardAnimation />;
+    case "ian":            return <IanCardAnimation />;
+    case "thinkdocs":      return <ThinkDocsMiniAnimation />;
+    case "autonomoai":     return <AutonomoAIMiniAnimation />;
+    case "review-attendant": return <ReviewAttendantMiniAnimation />;
+    case "attendai":       return <AttendAIMiniAnimation />;
+    case "elvis":          return <ElvisMiniAnimation />;
+    case "alluvium":       return <AlluviumMiniAnimation />;
+    case "demo-agent":     return <DemoAgentMiniAnimation />;
+    case "assetwisp":      return <AssetWispMiniAnimation />;
+    case "slimsnap":       return <SlimSnapMiniAnimation />;
+    case "lotiq":          return <LotIQMiniAnimation />;
+    case "estateai":       return <EStateAIMiniAnimation />;
+    case "pulse-ai":       return <PulseAiMiniAnimation />;
+    case "presales":       return <PresalesMiniAnimation />;
+    default:               return null;
   }
 }
 
 function renderNewsCardIcon(id: NewsCard["id"]) {
-  const commonIconClasses = "w-5 h-5 sm:w-6 sm:h-6";
-
+  const c = "w-5 h-5 sm:w-6 sm:h-6";
   switch (id) {
-    case "thinkdocs":
-      return <FileText className={commonIconClasses} />;
-    case "autonomoai":
-      return <Search className={commonIconClasses} />;
-    case "review-attendant":
-      return <MessageCircle className={commonIconClasses} />;
-    case "attendai":
-      return <Users className={commonIconClasses} />;
-    case "elvis":
-      return <Rocket className={commonIconClasses} />;
-    case "alluvium":
-      return <FileText className={commonIconClasses} />;
-    case "demo-agent":
-      return <Mic className={commonIconClasses} />;
-    case "assetwisp":
-      return <LineChart className={commonIconClasses} />;
-    case "slimsnap":
-      return <Apple className={commonIconClasses} />;
-    case "lotiq":
-      return <Car className={commonIconClasses} />;
-    case "estateai":
-      return <Users className={commonIconClasses} />;
-    default:
-      return null;
+    case "rex":              return <Rocket className={c} />;
+    case "vira":             return <Shield className={c} />;
+    case "ian":              return <Zap className={c} />;
+    case "thinkdocs":        return <FileText className={c} />;
+    case "autonomoai":       return <Search className={c} />;
+    case "review-attendant": return <MessageCircle className={c} />;
+    case "attendai":         return <Users className={c} />;
+    case "elvis":            return <Rocket className={c} />;
+    case "alluvium":         return <FileText className={c} />;
+    case "demo-agent":       return <Mic className={c} />;
+    case "assetwisp":        return <LineChart className={c} />;
+    case "slimsnap":         return <Apple className={c} />;
+    case "lotiq":            return <Car className={c} />;
+    case "estateai":         return <Users className={c} />;
+    case "pulse-ai":         return <Sparkles className={c} />;
+    case "presales":         return <LineChart className={c} />;
+    default:                 return null;
   }
 }
 
@@ -948,261 +1043,82 @@ export default function ProductSection() {
 
         {/* All product cards in a unified grid (REX / VIRA / IAN + others) */}
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* REX Card */}
-          <Link href="/rex" className="block h-full">
-            <motion.div
-              className="group relative p-4 sm:p-6 rounded-2xl bg-[#0A0C10] border border-white/5 overflow-hidden text-left animate-fade-in flex flex-col h-full w-full hover:scale-105 cursor-pointer transition-all duration-300"
-              variants={newsCardVariants}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.4, delay: 0 * 0.08, ease: "easeOut" }}
-            >
-              <div
-                className="
-                  absolute
-                  w-[150px]
-                  h-[150px]
-                  right-0
-                  top-[1.2px]
-                  bg-white
-                  opacity-[0.08]
-                  blur-[60px]
-                  pointer-events-none
-                "
-              />
-              <div className="relative z-10 flex flex-col gap-8 flex-1">
-                <div className="flex  gap-5">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 flex items-center justify-center mb-2 sm:mb-4 text-white flex-shrink-0">
-                    <Rocket className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </div>
-                  <div className="flex flex-col  flex-1">
-                    <h3 className="text-xl  font-medium text-white ">
-                      {productsById["rex"].title}
-                    </h3>
-                    <p className="text-gray-400 text-sm leading-tight line-clamp-2 flex-grow">
-                      {productsById["rex"].description}
-                    </p>
-                  </div>
-                </div>
-                <div className="mt-auto h-24 flex items-stretch">
-                  <div className="w-full">
-                    <RexCardAnimation />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </Link>
+  {allNewsCards.map((card, index) => {
+    const href = productPages[card.id];
+    const product = productsById[card.id as keyof typeof productsById];
 
-          {/* VIRA Card */}
-          <Link href="/vira" className="block h-full">
-            <motion.div
-              className="group relative p-4 sm:p-6 rounded-2xl bg-[#0A0C10] border border-white/5 overflow-hidden text-left animate-fade-in flex flex-col h-full w-full hover:scale-105 cursor-pointer transition-all duration-300"
-              variants={newsCardVariants}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.4, delay: 1 * 0.08, ease: "easeOut" }}
-            >
-              <div
-                className="
-                  absolute
-                  w-[150px]
-                  h-[150px]
-                  right-0
-                  top-[1.2px]
-                  bg-white
-                  opacity-[0.08]
-                  blur-[60px]
-                  pointer-events-none
-                "
-              />
-              <div className="relative z-10 flex flex-col gap-8 flex-1">
-                <div className="flex  gap-5">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 flex items-center justify-center mb-2 sm:mb-4 text-white flex-shrink-0">
-                    <Shield className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </div>
-                  <div className="flex flex-col  flex-1">
-                    <h3 className="text-xl  font-medium text-white ">
-                      {productsById["vira"].title}
-                    </h3>
-                    <p className="text-gray-400 text-sm leading-tight line-clamp-2 flex-grow">
-                      {productsById["vira"].description}
-                    </p>
-                  </div>
-                </div>
-                <div className="mt-auto h-24 flex items-stretch">
-                  <div className="w-full">
-                    <ViraCardAnimation />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </Link>
-
-          {/* IAN Card */}
-          <Link href="/ian" className="block h-full">
-            <motion.div
-              className="group relative p-4 sm:p-6 rounded-2xl bg-[#0A0C10] border border-white/5 overflow-hidden text-left animate-fade-in flex flex-col h-full w-full hover:scale-105 cursor-pointer transition-all duration-300"
-              variants={newsCardVariants}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.4, delay: 2 * 0.08, ease: "easeOut" }}
-            >
-              <div
-                className="
-                  absolute
-                  w-[150px]
-                  h-[150px]
-                  right-0
-                  top-[1.2px]
-                  bg-white
-                  opacity-[0.08]
-                  blur-[60px]
-                  pointer-events-none
-                "
-              />
-              <div className="relative z-10 flex flex-col gap-8 flex-1">
-                <div className="flex gap-5">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 flex items-center justify-center mb-2 sm:mb-4 text-white flex-shrink-0">
-                    <Zap className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </div>
-                  <div className="flex flex-col  flex-1">
-                    <h3 className="text-xl sm:text-2xl font-medium text-white ">
-                      {productsById["ian"].title}
-                    </h3>
-                    <p className="text-gray-400 text-sm leading-tight line-clamp-2 flex-grow">
-                      {productsById["ian"].description}
-                    </p>
-                  </div>
-                </div>
-                <div className="mt-auto h-24 flex items-stretch">
-                  <div className="w-full">
-                    <IanCardAnimation />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </Link>
-
-          {/* Remaining product cards following the exact layout as the REX card */}
-          {(() => {
-            const allCards = [...newsCardsRowOne, ...newsCardsRowTwo];
-            const firstRowCards = allCards.slice(0, 8);
-            const lastRowCards = allCards.slice(8);
-
-            const productPages: Record<string, string> = {
-              autonomoai: "/autonomoai",
-              "review-attendant": "/review-attendant",
-              attendai: "/attendai",
-              elvis: "/elvis",
-              thinkdocs: "/think-docs",
-              "demo-agent": "/demo-agent",
-              alluvium: "/alluvium",
-              estateai: "/prop-iq",
-            } as const;
-
-            const renderCard = (card: NewsCard, index: number) => {
-              const href = productPages[card.id];
-              const product = productsById[card.id as keyof typeof productsById];
-
-              // Safety check: skip rendering if product is not found
-              if (!product) {
-                console.warn(`Product not found for card ID: ${card.id}`);
-
-                return (
-                  <div
-                    key={card.id}
-                    className="group relative p-4 sm:p-6 rounded-2xl bg-red-950/40 border border-red-500/40 text-left flex flex-col h-full w-full"
-                  >
-                    <div className="flex gap-5">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-red-500/20 flex items-center justify-center text-red-300 flex-shrink-0">
-                        ⚠️
-                      </div>
-                      <div className="flex flex-col flex-1">
-                        <h3 className="text-xl font-medium text-red-200">
-                          Missing Product
-                        </h3>
-                        <p className="text-red-300/80 text-sm">
-                          ID: <span className="font-mono">{card.id}</span>
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="mt-auto text-[11px] text-red-400/70">
-                      Add this to <span className="font-mono">productsById</span>
-                    </div>
-                  </div>
-                );
-              }
-
-              const CardContent = (
-                <motion.div
-                  className="group relative p-4 sm:p-6 rounded-2xl bg-[#0A0C10] border border-white/5 overflow-hidden text-left animate-fade-in flex flex-col h-full w-full hover:scale-105 cursor-pointer transition-all duration-300"
-                  variants={newsCardVariants}
-                  initial="initial"
-                  whileInView="animate"
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{
-                    duration: 0.4,
-                    delay: (index + 3) * 0.08,
-                    ease: "easeOut",
-                  }}
-                >
-                  <div className="absolute w-[150px] h-[150px] right-0 top-0 bg-white opacity-[0.08] blur-[60px] pointer-events-none" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-100/0 via-white/5 to-orange-100/0 opacity-[0.25] pointer-events-none mix-blend-screen" />
-                  <div className="relative z-10 flex flex-col gap-8 flex-1">
-                    <div className="flex  gap-5">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 flex items-center justify-center mb-2 sm:mb-4 text-white flex-shrink-0">
-                        {renderNewsCardIcon(card.id)}
-                      </div>
-                      <div className="flex flex-col  flex-1">
-                        <h3 className="text-xl  font-medium text-white ">
-                          {product.title}
-                        </h3>
-                        <p className="text-gray-400 text-sm leading-tight line-clamp-2 flex-grow">
-                          {product.description}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="mt-auto h-24 flex items-stretch">
-                      <div className="w-full h-full">
-                        {renderNewsCardAnimation(card.id)}
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-
-              return href ? (
-                <Link key={card.id} href={href} className="block h-full">
-                  {CardContent}
-                </Link>
-              ) : (
-                <div key={card.id} className="block h-full">
-                  {CardContent}
-                </div>
-              );
-            };
-
-
-
-            return (
-              <>
-                {firstRowCards.map((card, index) => renderCard(card, index))}
-                {lastRowCards.length > 0 && (
-                  <div className="col-span-1 md:col-span-2 lg:col-span-4 flex flex-col sm:flex-row justify-center gap-4">
-                    {lastRowCards.map((card, index) =>
-                      renderCard(card, index + firstRowCards.length)
-                    )}
-                  </div>
-                )}
-              </>
-            );
-          })()}
-
+    // Fallback if product missing from config
+    if (!product) {
+      return (
+        <div
+          key={card.id}
+          className="group relative p-4 sm:p-6 rounded-2xl bg-red-950/40 border border-red-500/40 text-left flex flex-col h-full w-full"
+        >
+          <div className="flex gap-5">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-red-500/20 flex items-center justify-center text-red-300 flex-shrink-0">
+              ⚠️
+            </div>
+            <div className="flex flex-col flex-1">
+              <h3 className="text-xl font-medium text-red-200">Missing Product</h3>
+              <p className="text-red-300/80 text-sm">
+                ID: <span className="font-mono">{card.id}</span>
+              </p>
+            </div>
+          </div>
+          <div className="mt-auto text-[11px] text-red-400/70">
+            Add this to <span className="font-mono">productsById</span>
+          </div>
         </div>
+      );
+    }
+
+    const CardContent = (
+      <motion.div
+        className="group relative p-4 sm:p-6 rounded-2xl bg-[#0A0C10] border border-white/5 overflow-hidden text-left flex flex-col h-full w-full hover:scale-105 cursor-pointer transition-all duration-300"
+        variants={newsCardVariants}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{
+          duration: 0.4,
+          delay: index * 0.08,
+          ease: "easeOut",
+        }}
+      >
+        <div className="absolute w-[150px] h-[150px] right-0 top-0 bg-white opacity-[0.08] blur-[60px] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-100/0 via-white/5 to-orange-100/0 opacity-[0.25] pointer-events-none mix-blend-screen" />
+
+        <div className="relative z-10 flex flex-col gap-8 flex-1">
+          <div className="flex gap-5">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 flex items-center justify-center mb-2 sm:mb-4 text-white flex-shrink-0">
+              {renderNewsCardIcon(card.id)}
+            </div>
+            <div className="flex flex-col flex-1">
+              <h3 className="text-xl font-medium text-white">
+                {product.title}
+              </h3>
+              <p className="text-gray-400 text-sm leading-tight line-clamp-2 flex-grow">
+                {product.description}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-auto h-24 flex items-stretch">
+            <div className="w-full h-full">
+              {renderNewsCardAnimation(card.id)}
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    );
+
+    return (
+      <Link key={card.id} href={href} className="block h-full">
+        {CardContent}
+      </Link>
+    );
+  })}
+</div>
 
       </div>
     </section>

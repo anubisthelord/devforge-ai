@@ -9,20 +9,11 @@ import { productsById, type ProductId } from "@/config/products";
 import DotGrid from "@/components/dotgrid";
 
 const LEFT_COLUMN_IDS: ProductId[] = [
-  "rex",
-  "ian",
-  "vira",
-  "autonomoai",
-  "review-attendant",
+  "rex", "ian", "vira", "autonomoai", "review-attendant", "pulse-ai",
 ];
 
 const RIGHT_COLUMN_IDS: ProductId[] = [
-  "attendai",
-  "elvis",
-  "thinkdocs",
-  "alluvium",
-  "demo-agent",
-  "estateai",
+  "attendai", "elvis", "thinkdocs", "alluvium", "demo-agent", "estateai", "presales",
 ];
 
 const defaultHero = {

@@ -20,7 +20,21 @@ interface VerticalTimelineProps {
 
   /** Styling */
   backgroundClass?: string;
-  accentColorClass?: string;
+  badgeClass?: string;
+  headingClass?: string;
+  subheadingClass?: string;
+
+  /** Timeline line */
+  lineClass?: string;
+
+  /** Dot */
+  dotOuterClass?: string;
+  dotInnerClass?: string;
+
+  /** Item text */
+  itemTitleClass?: string;
+  itemDescriptionClass?: string;
+  itemIconClass?: string;
 
   /** Animation */
   animateLine?: boolean;
@@ -32,7 +46,15 @@ export default function VerticalTimeline({
   heading,
   subheading,
   backgroundClass = "bg-[#07090E]",
-  accentColorClass = "emerald",
+  badgeClass = "text-emerald-300",
+  headingClass = "text-white",
+  subheadingClass = "text-white/70",
+  lineClass = "bg-gradient-to-b from-emerald-400/40 via-emerald-400/10 to-transparent",
+  dotOuterClass = "border-emerald-400/50 bg-[#07090E]",
+  dotInnerClass = "bg-emerald-400",
+  itemTitleClass = "text-white",
+  itemDescriptionClass = "text-white/70",
+  itemIconClass = "text-emerald-300",
   animateLine = true,
 }: VerticalTimelineProps) {
   return (
@@ -44,18 +66,18 @@ export default function VerticalTimeline({
           <div className="max-w-3xl mx-auto text-center">
             {badge && (
               <p
-                className={`text-[11px] font-semibold tracking-[0.22em] text-${accentColorClass}-300 uppercase mb-3`}
+                className={`text-[11px] font-semibold tracking-[0.22em] uppercase mb-3 ${badgeClass}`}
               >
                 {badge}
               </p>
             )}
 
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-4">
+            <h2 className={`text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 ${headingClass}`}>
               {heading}
             </h2>
 
             {subheading && (
-              <p className="text-sm sm:text-base text-white/70">
+              <p className={`text-sm sm:text-base ${subheadingClass}`}>
                 {subheading}
               </p>
             )}
@@ -67,14 +89,7 @@ export default function VerticalTimeline({
             {/* CENTER LINE */}
             {animateLine && (
               <motion.div
-                className={`
-                  absolute top-0 h-full w-px
-                  left-3 sm:left-1/2
-                  bg-gradient-to-b
-                  from-${accentColorClass}-400/40
-                  via-${accentColorClass}-400/10
-                  to-transparent
-                `}
+                className={`absolute top-0 h-full w-px left-3 sm:left-1/2 ${lineClass}`}
                 animate={{ backgroundPositionY: ["0%", "100%"] }}
                 transition={{
                   duration: 3.2,
@@ -107,10 +122,10 @@ export default function VerticalTimeline({
                     >
                       {isLeft && (
                         <>
-                          <h3 className="text-base md:text-lg font-semibold text-white mb-2">
+                          <h3 className={`text-base md:text-lg font-semibold mb-2 ${itemTitleClass}`}>
                             {item.title}
                           </h3>
-                          <p className="text-sm md:text-base text-white/70 max-w-md ml-auto">
+                          <p className={`text-sm md:text-base max-w-md ml-auto ${itemDescriptionClass}`}>
                             {item.description}
                           </p>
                         </>
@@ -119,47 +134,35 @@ export default function VerticalTimeline({
 
                     {/* DOT */}
                     <span
-                      className={`
-                        relative z-10 mt-1
-                        flex h-5 w-5 items-center justify-center
-                        rounded-full border
-                        border-${accentColorClass}-400/50
-                        bg-[#07090E]
-                        ml-2 sm:ml-0
-                      `}
+                      className={`relative z-10 mt-1 flex h-5 w-5 items-center justify-center rounded-full border ml-2 sm:ml-0 ${dotOuterClass}`}
                     >
-                      <span
-                        className={`h-2.5 w-2.5 rounded-full bg-${accentColorClass}-400`}
-                      />
+                      <span className={`h-2.5 w-2.5 rounded-full ${dotInnerClass}`} />
                     </span>
 
                     {/* RIGHT CONTENT */}
                     <div
-                      className={`
-                        pl-6 sm:w-1/2 sm:pl-8
-                        ${isLeft ? "sm:opacity-0" : ""}
-                      `}
+                      className={`pl-6 sm:w-1/2 sm:pl-8 ${
+                        isLeft ? "sm:opacity-0" : ""
+                      }`}
                     >
                       {/* MOBILE TITLE */}
                       <div className="flex items-start gap-3 mb-2 sm:hidden">
                         {Icon && (
-                          <Icon
-                            className={`h-4 w-4 text-${accentColorClass}-300 mt-1`}
-                          />
+                          <Icon className={`h-4 w-4 mt-1 ${itemIconClass}`} />
                         )}
-                        <h3 className="font-semibold text-white">
+                        <h3 className={`font-semibold ${itemTitleClass}`}>
                           {item.title}
                         </h3>
                       </div>
 
                       {/* DESKTOP RIGHT TITLE */}
                       {!isLeft && (
-                        <h3 className="hidden sm:block text-base md:text-lg font-semibold text-white mb-2">
+                        <h3 className={`hidden sm:block text-base md:text-lg font-semibold mb-2 ${itemTitleClass}`}>
                           {item.title}
                         </h3>
                       )}
 
-                      <p className="text-sm sm:text-base text-white/70 leading-relaxed">
+                      <p className={`text-sm sm:text-base leading-relaxed ${itemDescriptionClass}`}>
                         {item.description}
                       </p>
                     </div>

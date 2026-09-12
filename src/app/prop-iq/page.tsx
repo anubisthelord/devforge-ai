@@ -148,7 +148,7 @@ export default function ViraPage() {
           heading="How PropIQ Works"
           subheading="Two parallel AI flows — one for client management, one for investor matching."
           items={benefits}
-          accentColorClass="emerald"
+       
         />
 
         <section className="max-w-7xl 2xl:max-w-[1440px] mx-auto rounded-4xl my-12 lg:my-16 xl:my-20 2xl:my-24 border-2 border-dashed border-white/5  bg-[#ffffff08] overflow-hidden shadow-[inset_0_-1px_2px_rgba(255,255,255,0.05),inset_0_1px_1px_rgba(255,255,255,0.20)]">

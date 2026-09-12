@@ -103,7 +103,7 @@ export default function AttendAIPage() {
             heading="Everything you need for automated attendance"
             subheading="AttendAI brings computer vision, IP cameras, and clear reporting together so you get accurate attendance without manual tracking or unreliable punch cards."
             items={attendAIBenefits}
-            accentColorClass="emerald"
+          
           />
         </div>
 

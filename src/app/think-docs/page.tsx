@@ -163,11 +163,8 @@ export default function ThinkDocsPage() {
             heading="Everything you need to manage documents intelligently"
             subheading="ThinkDocs combines centralized storage, AI search, auto-tagging, collaboration, insights, and workflow automation so your content is organized, findable, and actionable."
             items={coreCapabilities}
-            accentColorClass="sky"
           />
         </div>
-
-       
 
         <TestimonialsInnerPages />
         <CallToAction />

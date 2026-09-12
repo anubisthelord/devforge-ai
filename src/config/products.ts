@@ -23,7 +23,9 @@ export type ProductId =
   | "alluvium"
   | "thinkdocs"
   | "demo-agent"
-  | "estateai";
+  | "estateai"
+  | "pulse-ai"     // ✅ use hyphen consistently
+  | "presales";
 
 export type ProductConfig = {
   id: ProductId;
@@ -134,6 +136,25 @@ export const products: ProductConfig[] = [
       "An AI-powered platform for real estate Agents / brokers to identify serious buyers, recommend the right properties, and generate personalized sales pitches in seconds.",
     icon: House,
     path: "/prop-iq",
+    showInNavbar: true,
+  },
+  {
+    id: "pulse-ai",
+    title: "Pulse-Ai",
+    description:
+      "Turn a 5-minute conversation into a company's AI maturity score, its real gaps, and its next move — while turning every response into a qualified signal for your team.",
+    icon: House,
+    path: "/pulse-ai",
+    showInNavbar: true,
+  },
+  
+  {
+    id: "presales",
+    title: "Presales",
+    description:
+      "Scoring intent, drafting follow-ups, and coordinating staffing — in minutes, not days. Your presales team focuses on discovery, solution design, and closing, while AI handles scoring, classification, personalized outreach, and profile coordination.",
+    icon: House,
+    path: "/presales",
     showInNavbar: true,
   },
 ];
