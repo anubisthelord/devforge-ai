@@ -9,7 +9,7 @@ import { productsById, type ProductId } from "@/config/products";
 import DotGrid from "@/components/dotgrid";
 
 const LEFT_COLUMN_IDS: ProductId[] = [
-  "rex", "ian", "vira", "autonomoai", "review-attendant", "pulse-ai",
+  "rex", "ian", "vira", "autonomoai", "review-attendant", "pulse-ai","agentpipeline",
 ];
 
 const RIGHT_COLUMN_IDS: ProductId[] = [

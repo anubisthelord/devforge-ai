@@ -25,7 +25,8 @@ export type ProductId =
   | "demo-agent"
   | "estateai"
   | "pulse-ai"     // ✅ use hyphen consistently
-  | "presales";
+  | "presales"
+  |"agentpipeline";
 
 export type ProductConfig = {
   id: ProductId;
@@ -155,6 +156,15 @@ export const products: ProductConfig[] = [
       "Scoring intent, drafting follow-ups, and coordinating staffing — in minutes, not days. Your presales team focuses on discovery, solution design, and closing, while AI handles scoring, classification, personalized outreach, and profile coordination.",
     icon: House,
     path: "/presales",
+    showInNavbar: true,
+  },
+  {
+    id: "agentpipeline",
+    title: "Agent-Pipeline",
+    description:
+      "Four agents pick up requirements, write the code, prove it against real tests in an isolated sandbox, and review it — inside your existing Jira, Azure DevOps, and Git workflow, under a human approval gate.",
+    icon: House,
+    path: "/agent-pipeline",
     showInNavbar: true,
   },
 ];

@@ -249,6 +249,20 @@ case "pulse-ai":
     </div>
   );
 
+  case "agentpipeline":
+  return (
+    <div className="relative w-full h-full flex flex-col items-center justify-center gap-1">
+      {[40, 30, 20, 12].map((w, i) => (
+        <motion.div
+          key={i}
+          className="h-2 bg-emerald-400/60 rounded"
+          animate={{ width: [`${w}%`, `${w + 6}%`, `${w}%`] }}
+          transition={{ duration: 2, repeat: Infinity, delay: i * 0.15 }}
+        />
+      ))}
+    </div>
+  )
+
 /* ============================= */
 /* 📊 Presales – Funnel Bars    */
 /* ============================= */
@@ -268,4 +282,7 @@ case "presales":
     default:
       return null;
   }
+
+  
 }
+

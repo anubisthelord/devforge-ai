@@ -14,6 +14,7 @@ import DemoAgentHero from "@/components/DemoAgentHero";
 import EStateAiHero from "../EStateAiHero";
 import PulseAiHero from "@/components/PlusHero";        // ✅ new
 import PresalesHero from "@/components/AILeadAnalyticsHero";      // ✅ new
+import AgentPipelineHero from "../agent-pipeline-hero";
 const heroMap: Record<ProductId, React.ComponentType> = {
   estateai: EStateAiHero,
   rex: RexHero,
@@ -26,8 +27,9 @@ const heroMap: Record<ProductId, React.ComponentType> = {
   thinkdocs: ThinkDocsHero,
   alluvium: AlluviumHero,
   "demo-agent": DemoAgentHero,
-  "pulse-ai": PulseAiHero,     // ✅ fixed
-  presales: PresalesHero,      // ✅ added
+  "pulse-ai": PulseAiHero, // ✅ fixed
+  presales: PresalesHero,
+  agentpipeline: AgentPipelineHero,
 };
 
 interface ProductHeroMapProps {

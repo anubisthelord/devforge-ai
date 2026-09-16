@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { productsById } from "@/config/products";
+import AgentPipelineHero from "./agent-pipeline-hero";
 
 const newsCardVariants = {
   initial: { opacity: 0, y: 20 },
@@ -234,24 +235,84 @@ function IanCardAnimation() {
   );
 }
 
+function AgentPipelineMiniAnimation() {
+  // Pipeline stage bars + review rounds
+  return (
+    <div className="mt-4 h-full rounded-xl border border-emerald-400/25 bg-gradient-to-r from-slate-950 via-slate-950/80 to-emerald-950/40 px-3 py-2">
+      <div className="flex items-center gap-3">
+        {/* Left — animated stage bars */}
+        <div className="flex-1">
+          <div className="flex items-center justify-between text-[10px] text-emerald-100/80 mb-1">
+            <span>Pipeline stage</span>
+            <span className="text-emerald-300 font-semibold">Review · Round 2/3</span>
+          </div>
+
+          {/* Stage bars — 4 stages across the pipeline */}
+          <div className="flex items-end gap-[3px] h-10">
+            {[
+              { h: 92, label: 'Intake' },
+              { h: 88, label: 'Build' },
+              { h: 95, label: 'Verify' },
+              { h: 62, label: 'Review' },
+              { h: 40, label: 'Gate' },
+              { h: 30, label: 'Merge' },
+              { h: 20, label: 'Audit' },
+            ].map((stage, idx) => (
+              <motion.div
+                key={idx}
+                className={`flex-1 rounded-full ${
+                  idx < 3
+                    ? 'bg-emerald-400/90'
+                    : idx === 3
+                    ? 'bg-emerald-400/70'
+                    : 'bg-emerald-400/30'
+                }`}
+                animate={{
+                  height: [`${stage.h * 0.6}%`, `${stage.h}%`, `${stage.h * 0.7}%`],
+                  opacity: idx < 3 ? [0.6, 1, 0.7] : idx === 3 ? [0.4, 0.9, 0.5] : [0.2, 0.4, 0.25],
+                }}
+                transition={{
+                  duration: 1.8,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                  delay: idx * 0.06,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Right — status chip */}
+        <div className="flex flex-col items-end gap-1">
+          <span className="text-[9px] text-emerald-100/75">Sandbox</span>
+          <span className="rounded-full bg-emerald-500/20 border border-emerald-400/40 px-2 py-[2px] text-[10px] text-emerald-50">
+            47 · Passing
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 type NewsCard = {
   id:
-    | "rex"
-    | "vira"
-    | "ian"
-    | "autonomoai"
-    | "review-attendant"
-    | "attendai"
-    | "elvis"
-    | "thinkdocs"
-    | "demo-agent"
-    | "assetwisp"
-    | "slimsnap"
-    | "lotiq"
-    | "alluvium"
-    | "estateai"
-    | "pulse-ai"
-    | "presales";
+  | "rex"
+  | "vira"
+  | "ian"
+  | "autonomoai"
+  | "review-attendant"
+  | "attendai"
+  | "elvis"
+  | "thinkdocs"
+  | "demo-agent"
+  | "assetwisp"
+  | "slimsnap"
+  | "lotiq"
+  | "alluvium"
+  | "estateai"
+  | "pulse-ai"
+  | "presales"
+  |"agentpipeline";
 };
 
 // ✅ Single flat list, in display order
@@ -269,6 +330,7 @@ const allNewsCards: NewsCard[] = [
   { id: "estateai" },
   { id: "pulse-ai" },
   { id: "presales" },
+  {id:"agentpipeline"}
 ];
 
 const productPages: Record<NewsCard["id"], string> = {
@@ -285,9 +347,10 @@ const productPages: Record<NewsCard["id"], string> = {
   estateai: "/prop-iq",
   "pulse-ai": "/pulse-ai",
   presales: "/presales",
-  assetwisp: "",
+  agentpipeline: "/agent-pipeline",
   slimsnap: "",
-  lotiq: ""
+  lotiq: "",
+  assetwisp: ""
 };
 function AutonomoAIMiniAnimation() {
   // Graph of connected knowledge nodes / queries
@@ -984,46 +1047,48 @@ function LotIQMiniAnimation() {
 
 function renderNewsCardAnimation(id: NewsCard["id"]) {
   switch (id) {
-    case "rex":            return <RexCardAnimation />;
-    case "vira":           return <ViraCardAnimation />;
-    case "ian":            return <IanCardAnimation />;
-    case "thinkdocs":      return <ThinkDocsMiniAnimation />;
-    case "autonomoai":     return <AutonomoAIMiniAnimation />;
+    case "rex": return <RexCardAnimation />;
+    case "vira": return <ViraCardAnimation />;
+    case "ian": return <IanCardAnimation />;
+    case "thinkdocs": return <ThinkDocsMiniAnimation />;
+    case "autonomoai": return <AutonomoAIMiniAnimation />;
     case "review-attendant": return <ReviewAttendantMiniAnimation />;
-    case "attendai":       return <AttendAIMiniAnimation />;
-    case "elvis":          return <ElvisMiniAnimation />;
-    case "alluvium":       return <AlluviumMiniAnimation />;
-    case "demo-agent":     return <DemoAgentMiniAnimation />;
-    case "assetwisp":      return <AssetWispMiniAnimation />;
-    case "slimsnap":       return <SlimSnapMiniAnimation />;
-    case "lotiq":          return <LotIQMiniAnimation />;
-    case "estateai":       return <EStateAIMiniAnimation />;
-    case "pulse-ai":       return <PulseAiMiniAnimation />;
-    case "presales":       return <PresalesMiniAnimation />;
-    default:               return null;
+    case "attendai": return <AttendAIMiniAnimation />;
+    case "elvis": return <ElvisMiniAnimation />;
+    case "alluvium": return <AlluviumMiniAnimation />;
+    case "demo-agent": return <DemoAgentMiniAnimation />;
+    case "assetwisp": return <AssetWispMiniAnimation />;
+    case "slimsnap": return <SlimSnapMiniAnimation />;
+    case "lotiq": return <LotIQMiniAnimation />;
+    case "estateai": return <EStateAIMiniAnimation />;
+    case "pulse-ai": return <PulseAiMiniAnimation />;
+    case "presales": return <PresalesMiniAnimation />;
+    case "agentpipeline": return <AgentPipelineMiniAnimation />;
+    default: return null;
   }
 }
 
 function renderNewsCardIcon(id: NewsCard["id"]) {
   const c = "w-5 h-5 sm:w-6 sm:h-6";
   switch (id) {
-    case "rex":              return <Rocket className={c} />;
-    case "vira":             return <Shield className={c} />;
-    case "ian":              return <Zap className={c} />;
-    case "thinkdocs":        return <FileText className={c} />;
-    case "autonomoai":       return <Search className={c} />;
+    case "rex": return <Rocket className={c} />;
+    case "vira": return <Shield className={c} />;
+    case "ian": return <Zap className={c} />;
+    case "thinkdocs": return <FileText className={c} />;
+    case "autonomoai": return <Search className={c} />;
     case "review-attendant": return <MessageCircle className={c} />;
-    case "attendai":         return <Users className={c} />;
-    case "elvis":            return <Rocket className={c} />;
-    case "alluvium":         return <FileText className={c} />;
-    case "demo-agent":       return <Mic className={c} />;
-    case "assetwisp":        return <LineChart className={c} />;
-    case "slimsnap":         return <Apple className={c} />;
-    case "lotiq":            return <Car className={c} />;
-    case "estateai":         return <Users className={c} />;
-    case "pulse-ai":         return <Sparkles className={c} />;
-    case "presales":         return <LineChart className={c} />;
-    default:                 return null;
+    case "attendai": return <Users className={c} />;
+    case "elvis": return <Rocket className={c} />;
+    case "alluvium": return <FileText className={c} />;
+    case "demo-agent": return <Mic className={c} />;
+    case "assetwisp": return <LineChart className={c} />;
+    case "slimsnap": return <Apple className={c} />;
+    case "lotiq": return <Car className={c} />;
+    case "estateai": return <Users className={c} />;
+    case "pulse-ai": return <Sparkles className={c} />;
+    case "presales": return <LineChart className={c} />;
+    case "agentpipeline": return <LineChart className={c} />;
+    default: return null;
   }
 }
 
@@ -1043,82 +1108,82 @@ export default function ProductSection() {
 
         {/* All product cards in a unified grid (REX / VIRA / IAN + others) */}
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-  {allNewsCards.map((card, index) => {
-    const href = productPages[card.id];
-    const product = productsById[card.id as keyof typeof productsById];
+          {allNewsCards.map((card, index) => {
+            const href = productPages[card.id];
+            const product = productsById[card.id as keyof typeof productsById];
 
-    // Fallback if product missing from config
-    if (!product) {
-      return (
-        <div
-          key={card.id}
-          className="group relative p-4 sm:p-6 rounded-2xl bg-red-950/40 border border-red-500/40 text-left flex flex-col h-full w-full"
-        >
-          <div className="flex gap-5">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-red-500/20 flex items-center justify-center text-red-300 flex-shrink-0">
-              ⚠️
-            </div>
-            <div className="flex flex-col flex-1">
-              <h3 className="text-xl font-medium text-red-200">Missing Product</h3>
-              <p className="text-red-300/80 text-sm">
-                ID: <span className="font-mono">{card.id}</span>
-              </p>
-            </div>
-          </div>
-          <div className="mt-auto text-[11px] text-red-400/70">
-            Add this to <span className="font-mono">productsById</span>
-          </div>
+            // Fallback if product missing from config
+            if (!product) {
+              return (
+                <div
+                  key={card.id}
+                  className="group relative p-4 sm:p-6 rounded-2xl bg-red-950/40 border border-red-500/40 text-left flex flex-col h-full w-full"
+                >
+                  <div className="flex gap-5">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-red-500/20 flex items-center justify-center text-red-300 flex-shrink-0">
+                      ⚠️
+                    </div>
+                    <div className="flex flex-col flex-1">
+                      <h3 className="text-xl font-medium text-red-200">Missing Product</h3>
+                      <p className="text-red-300/80 text-sm">
+                        ID: <span className="font-mono">{card.id}</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-auto text-[11px] text-red-400/70">
+                    Add this to <span className="font-mono">productsById</span>
+                  </div>
+                </div>
+              );
+            }
+
+            const CardContent = (
+              <motion.div
+                className="group relative p-4 sm:p-6 rounded-2xl bg-[#0A0C10] border border-white/5 overflow-hidden text-left flex flex-col h-full w-full hover:scale-105 cursor-pointer transition-all duration-300"
+                variants={newsCardVariants}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.08,
+                  ease: "easeOut",
+                }}
+              >
+                <div className="absolute w-[150px] h-[150px] right-0 top-0 bg-white opacity-[0.08] blur-[60px] pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-100/0 via-white/5 to-orange-100/0 opacity-[0.25] pointer-events-none mix-blend-screen" />
+
+                <div className="relative z-10 flex flex-col gap-8 flex-1">
+                  <div className="flex gap-5">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 flex items-center justify-center mb-2 sm:mb-4 text-white flex-shrink-0">
+                      {renderNewsCardIcon(card.id)}
+                    </div>
+                    <div className="flex flex-col flex-1">
+                      <h3 className="text-xl font-medium text-white">
+                        {product.title}
+                      </h3>
+                      <p className="text-gray-400 text-sm leading-tight line-clamp-2 flex-grow">
+                        {product.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-auto h-24 flex items-stretch">
+                    <div className="w-full h-full">
+                      {renderNewsCardAnimation(card.id)}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            );
+
+            return (
+              <Link key={card.id} href={href} className="block h-full">
+                {CardContent}
+              </Link>
+            );
+          })}
         </div>
-      );
-    }
-
-    const CardContent = (
-      <motion.div
-        className="group relative p-4 sm:p-6 rounded-2xl bg-[#0A0C10] border border-white/5 overflow-hidden text-left flex flex-col h-full w-full hover:scale-105 cursor-pointer transition-all duration-300"
-        variants={newsCardVariants}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{
-          duration: 0.4,
-          delay: index * 0.08,
-          ease: "easeOut",
-        }}
-      >
-        <div className="absolute w-[150px] h-[150px] right-0 top-0 bg-white opacity-[0.08] blur-[60px] pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-r from-orange-100/0 via-white/5 to-orange-100/0 opacity-[0.25] pointer-events-none mix-blend-screen" />
-
-        <div className="relative z-10 flex flex-col gap-8 flex-1">
-          <div className="flex gap-5">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 flex items-center justify-center mb-2 sm:mb-4 text-white flex-shrink-0">
-              {renderNewsCardIcon(card.id)}
-            </div>
-            <div className="flex flex-col flex-1">
-              <h3 className="text-xl font-medium text-white">
-                {product.title}
-              </h3>
-              <p className="text-gray-400 text-sm leading-tight line-clamp-2 flex-grow">
-                {product.description}
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-auto h-24 flex items-stretch">
-            <div className="w-full h-full">
-              {renderNewsCardAnimation(card.id)}
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    );
-
-    return (
-      <Link key={card.id} href={href} className="block h-full">
-        {CardContent}
-      </Link>
-    );
-  })}
-</div>
 
       </div>
     </section>
